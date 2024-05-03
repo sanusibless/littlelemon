@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
 }
@@ -35,4 +38,100 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.nav-bar {
+  max-width: 80%;
+  margin: auto;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  display: flex;
+  padding-left:  5vw;
+  justify-content: space-between;
+  align-items: baseline;
+  align-content: baseline;
+}
+
+
+.nav-logo {
+  padding: 0;
+  margin: 0;
+}
+
+.menu {
+  margin-top: 5vh;
+  display: flex;
+  list-style: none;
+  justify-content: flex-end;
+  align-items: baseline;
+  align-self: center;
+}
+.menu li {
+
+}
+
+.menu li a{
+  font-size: 20px;
+  display: block;
+  padding-right: 1em;
+  text-decoration: none;
+  color: #495E57;
+}
+
+.menu li a:hover {
+  color: #333333;
+}
+
+.menu li:last-child a{
+  background-color: #040d20;
+  color: white;
+  padding: 6px 15px;
+  border-radius: 10px;
+}
+
+.menu li:last-child a:hover {
+  color: wheat;
+  background-color:  #333333;
+}
+
+.intro-section {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  margin: auto;
+}
+
+.intro-img {
+  padding-top: 3vh;
+  width: 500px;
+  height: 500px;
+  opacity: 0.7;
+  aspect-ratio: 16/9;
+  border-radius: 25px 25px 25px 25px;
+  
+}
+
+.intro-msg {
+    width: 70%;
+}
+
+.intro-body {
+  width: 100%;
+  color: #ffffff;
+  padding-right: 10%;
+
+}
+
+.intro-body h1 {
+  font-size: xx-large;
+  color: #dfcb12;
+}
+
+.intro-body div {
+  font-size: 25px;
+}
+
+.overlay {
+  background-color: #040d20;
 }
