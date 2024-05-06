@@ -6,6 +6,9 @@ export default function IntroMsg() {
             <div className="">
                 Discover culinary delight at Little Lemon. Fresh, local ingredients, expertly crafted flavors. A dining experience beyond the ordinary.
             </div>
+            <div className="intro-btn">
+                <a href="" >Book a table</a>
+            </div>
         </div>
     </div>
 }

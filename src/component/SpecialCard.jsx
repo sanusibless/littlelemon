@@ -22,7 +22,7 @@ export default function SpecialCard({ name, src, body, price}) {
                         {body}
                     </div>
                     <div className="meal-order">
-                        <a  href>Add to Order </a>
+                        <a  href>Add to order </a>
                     </div>
                 </div>
             </div>
