@@ -3,7 +3,7 @@ import image from "../icons_assets/Logo.svg"
 
 
 export default function Nav() {
-    return <nav className='nav-bar'>
+    return <nav className='nav-container'>
             <div className='nav-logo'>
                 <img src={image} className="" alt="logo" />
             </div>

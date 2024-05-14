@@ -5,10 +5,10 @@ export default function Newsletter() {
     <div>
         <h3 className="footer-title">Newsletter</h3>
         <p>Do you want to receive Newsletter about latest meals</p>
-        <div>
+        <div className='newsletter'>
             <form>
-                <input name='email' type='email' />
-                <button>
+                <input name='email' type='email' className='newsletter-input' placeholder='Enter your email'/>
+                <button className='newsletter-btn'>
                     Subscribe
                 </button>
             </form>

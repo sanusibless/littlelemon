@@ -43,18 +43,33 @@
 
 
 .nav-bar {
-  max-width: 80%;
-  position: sticky;
+  width: 100%;
+  position: fixed;
+  z-index: 6000;
+}
+.nav-container {
+  position: absolute;
+  width: 100%;
   margin: auto;
-  padding-top: 3vh;
-  padding-bottom: 3vh;
   display: flex;
-  padding-left:  5vw;
   justify-content: space-between;
-  align-items: baseline;
-  align-content: baseline;
+  align-self: center;
+  align-items: center;
+  padding-left: 40px;
+  padding-right: 40px;
+  color: #000000;
+  background-color: #ffffff;
+  border-bottom: 3px solid #e6e4e4;
+  z-index: 6000;
 }
 
+.nav-bar .overlay {
+  position: absolute;
+  width: 100%;
+  height: 12vh;
+  z-index: 6000;
+  background-color: rgba(255, 255, 255, 0.5);
+}
 
 .nav-logo {
   padding: 0;
@@ -63,6 +78,7 @@
 
 .menu {
   margin-top: 5vh;
+  z-index: 7000;
   display: flex;
   list-style: none;
   justify-content: flex-end;
@@ -70,12 +86,12 @@
   align-self: center;
 }
 
-.menu li a{
+.menu li a {
   font-size: 20px;
   display: block;
   padding-right: 1em;
   text-decoration: none;
-  color: #495E57;
+  color: #000000;
 }
 
 .menu li a:hover {
@@ -95,10 +111,11 @@
 }
 
 .intro-section {
+
   display: flex;
   justify-content: space-around;
   width: 80%;
-  margin: auto;
+  margin: 20vh auto;
 }
 
 .intro-img {
@@ -107,6 +124,7 @@
   height: 420px;
   opacity: 0.7;
   aspect-ratio: 16/9;
+  z-index: -1000;
   border-radius: 25px 25px 25px 25px;
   
 }
@@ -293,10 +311,101 @@
   margin-top: 0;
 }
 
+.book-div {
+  display: flex;
+  max-width: 80%;
+  margin: auto;
+}
+
+.book-div > div {
+  width: 50%;
+}
+
+.book-div .book-img img {
+  display: block;
+  max-width: 100%;
+}
+
+.book-div .book-form {
+  color: #010d2a;
+}
+
+.book-form .form-container {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.form-control label {
+    padding-bottom: 20px;
+}
+.book-form .form-control {
+  width: 50%;
+  margin-bottom: 15px;
+}
+
+.form-control input {
+  padding: 0.50em;
+}
+
+.form-group {
+  padding-bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  justify-items: baseline;
+  align-items: baseline;
+  align-self: baseline;
+}
+
+.form-group .form-control {
+  padding-right: 20px;
+}
+.form-group .form-control:last-child {
+  padding-right: 0px;
+}
+.book-form .form-control, .form-control input {
+  display: block;
+  width: 100%;
+  height: 40px;
+}
+
+
+.form-select{
+  margin-top: 10px;
+  display: block;
+  height: 5vh;
+  width: 100%;
+  background-color: #f9f9f9;
+  text-align: center;
+  color: #011032;
+  border: none;
+  border-radius: 10px;
+}
+
+.form-select::after {
+  content: "";
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  resize: none;
+}
+
+.form-btn {
+  background-color: #011a52;
+  color: #e6e4e4;
+  border-radius: 5px;
+  border: none;
+  font-size: 20px;
+}
+
 .all-chefs h2 {
   padding: 5vh;
   margin-top: 5vh;
 }
+
 .all-chefs-container {
   display: flex;
   width: 80%;
@@ -338,9 +447,86 @@ footer {
   display: flex;
   max-width: 80%;
   margin: auto;
+  justify-content: space-around;
 }
 
-.footer-info > div {
-  width: 25%;
-  
+.footer-title {
+  color: #dfcb12;
+  position: relative;
+}
+
+.footer-title::after {
+  position: absolute;
+  content: "";
+  width: 45px;
+  height: 3px;
+  padding-left: -5px;
+  top: 10px;
+  color: #dfcb12;
+  background-color: #dfcb12;
+  margin-left: 5px;
+}
+
+.company-menu, .contact-menu {
+  list-style: none;
+}
+
+.company-menu li, .contact-menu li {
+  padding-bottom: 5px;
+}
+
+.company-menu li:hover {
+  transition: 0.9s all;
+  letter-spacing: 2px;
+}
+
+.company-menu li a {
+  color: #f9f9f9;
+  text-decoration: none;
+}
+
+.newsletter-input {
+  padding: 3px 4px;
+  height: 40px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  color: #040d20;
+  border: none;
+  appearance: none;
+  outline: none;
+}
+
+.newsletter-input:focus {
+  appearance: none;
+  border: none;
+}
+
+.newsletter-btn {
+  background-color: #dfcb12;
+  display: inline-block;
+  height: 40px;
+  padding: 11.75px 20px;
+  border: none;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  outline: none;
+}
+
+.terms {
+  margin-top: 5vh;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.terms li::after {
+  content: " | ";
+  margin-right: 5px;
+}
+
+footer > p {
+  text-align: center;
+  margin-bottom: 0;
+  padding-bottom: 5vh;
 }

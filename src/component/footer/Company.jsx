@@ -1,8 +1,8 @@
 export default function Company() {
     return ( 
         <div>
-            <h3 className="footer-title">Company</h3>
-            <ul>
+            <h3 className="footer-title">Company </h3>
+            <ul className="company-menu">
                 <li><a href="">About Us</a></li>
                 <li><a href="">Contact Us</a></li>
                 <li><a href="">Reservation</a></li>

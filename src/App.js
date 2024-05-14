@@ -6,6 +6,7 @@ import Intro from './component/Intro';
 import Specials from './component/Specials';
 import Testimonials from  './component/Testimonials'
 import AllChefs from './component/AllChefs';
+import BookDiv from './component/booktable/BookDiv';
 
 
 
@@ -17,6 +18,7 @@ function App() {
       <Intro/>
       <Specials />
       <Testimonials />
+      <BookDiv />
       <AllChefs />
       <Footer />
     </div>

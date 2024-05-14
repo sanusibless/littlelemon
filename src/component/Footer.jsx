@@ -13,9 +13,14 @@ export default function Footer() {
                 <Newsletter />
             </div>
             <div>
-                <a>Privacy & Policy</a> | <a>Help</a> | <a>FQAs </a>
+                    <ul className="terms">
+                        <li>Privacy & Policy </li>
+                        <li>Terms &amp; Conditions</li>
+                        <li>Help</li>
+                        <li>FAQs</li>
+                    </ul>
             </div>
-            <h3>All right reserved &copy;{ new Date().getFullYear() } Little Lemon </h3>
+            <p>All right reserved &copy;{ new Date().getFullYear() } Little Lemon </p>
         </footer>
     </>
 }
