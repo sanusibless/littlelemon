@@ -1,6 +1,6 @@
-import { Link }  from 'react';
+import { Link, Routes}  from 'react';
 import image from "../icons_assets/Logo.svg"
-
+import React from 'react'
 
 export default function Nav() {
     return <nav className='nav-container'>
@@ -9,11 +9,8 @@ export default function Nav() {
             </div>
             <div>
             <ul className='menu'>
-                <li><a href="/home">Home</a></li>
-                <li><a href="/about">Menu</a></li>
-                <li><a href="/services">Reversations</a></li>
-                <li><a href="/services">Order Online</a></li>
-                <li><a href="/orders">Login</a></li>
+                <Routes>
+                </Routes>
             </ul>
             </div>
         </nav>

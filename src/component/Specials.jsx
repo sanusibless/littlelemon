@@ -2,6 +2,7 @@ import SpecialCard from "./SpecialCard";
 import greekSalad from "../icons_assets/greek salad.jpg";
 import lemonDessert from "../icons_assets/lemon dessert.jpg";
 import organicFood from "../icons_assets/organic food.jpeg";
+import React from 'react'
  
 export default function Specials() {
     let body = "This will be the descrtiption for the meals, so mesmerizing, a lot of people will benefit from the use of this app";

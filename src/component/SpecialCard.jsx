@@ -1,3 +1,5 @@
+import React from 'react'
+
 export default function SpecialCard({ name, src, body, price}) {
     let formatter = new Intl.NumberFormat('en-NG',
         {
@@ -15,8 +17,8 @@ export default function SpecialCard({ name, src, body, price}) {
                 </div> 
                 <div className="meal-body">
                     <div className="meal-header">
-                        <h2>{name}</h2>
-                        <h2>{price}</h2>
+                        <h3>{name}</h3>
+                        <h4>{price}</h4>
                     </div>
                     <div >
                         {body}

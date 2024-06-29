@@ -6,6 +6,7 @@ import testimonal1 from '../icons_assets/img/testimonial-1.jpg'
 import testimonal2 from '../icons_assets/img/testimonial-2.jpg'
 import testimonal3 from '../icons_assets/img/testimonial-3.jpg'
 import testimonal4 from '../icons_assets/img/testimonial-4.jpg'
+import React from 'react'
 
 export default function Testimonials() {
     const settings = {

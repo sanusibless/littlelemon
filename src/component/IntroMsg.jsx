@@ -1,3 +1,6 @@
+
+import React from 'react'
+
 export default function IntroMsg() {
     return <div className="intro-msg">
         <div className="intro-body">

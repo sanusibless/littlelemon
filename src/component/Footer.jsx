@@ -2,6 +2,7 @@ import Company from "./footer/Company"
 import Contact from "./footer/Contact"
 import Newsletter from "./footer/Newsletter"
 import Opening from "./footer/Opening"
+import React from 'react'
 
 export default function Footer() {
     return <>
