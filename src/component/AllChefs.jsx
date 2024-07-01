@@ -43,8 +43,8 @@ export default function AllChefs() {
                 </h2>
                 <div className='all-chefs-container'>
                 {
-                    chefs.map(chef => {
-                        return <ChefCard {...chef}/>
+                    chefs.map((chef,index) => {
+                        return <ChefCard key={index} {...chef}/>
                     })
                 }
                 </div>

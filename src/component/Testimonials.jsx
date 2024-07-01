@@ -60,8 +60,8 @@ export default function Testimonials() {
                 </h2>
             <Slider {...settings}>
                 {
-                    testimonials.map(testimonial => {
-                        return <TestimonialCard {...testimonial}/>
+                    testimonials.map((testimonial, index) => {
+                        return <TestimonialCard key={index} {...testimonial}/>
                     })
                 }
             </Slider>

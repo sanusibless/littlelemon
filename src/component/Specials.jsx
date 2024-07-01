@@ -35,8 +35,8 @@ export default function Specials() {
                 </div>
                 <div className="specials-meals">
                     {
-                        meals.map( meal => {
-                            return <SpecialCard {...meal}/>
+                        meals.map( (meal, index) => {
+                            return <SpecialCard key={meal.name} {...meal}/>
                         })
                     }
                 </div>

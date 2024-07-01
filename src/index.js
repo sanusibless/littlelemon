@@ -3,11 +3,42 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createBrowserRouter, Link, RouterProvider } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import ReservationPage from './pages/ReservationPage';
 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <HomePage />,
+    errorElement: <div> Oops! Not Found </div>
+  },
+  {
+    path: '/booking',
+    element: <ReservationPage />
+  },
+  {
+    path: '/menus',
+    element: <MenusPage />
+  },
+  {
+    path: '/contact-us',
+    element: <ContactPage />
+  },
+  {
+    path: '/faqs',
+    element: <FAQsPage />
+  },
+  {
+    path: '/login',
+    element: <LoginPage />
+  },
+
+]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}/>
   </React.StrictMode>
 );
 

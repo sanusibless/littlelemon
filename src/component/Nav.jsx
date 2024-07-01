@@ -1,4 +1,5 @@
-import { Link, Routes}  from 'react';
+
+import { Link } from "react-router-dom"
 import image from "../icons_assets/Logo.svg"
 import React from 'react'
 
@@ -9,8 +10,12 @@ export default function Nav() {
             </div>
             <div>
             <ul className='menu'>
-                <Routes>
-                </Routes>
+                <Link className='link' to="/" >Home</Link>
+                <Link className='link' to="/booking" >Reservations</Link>
+                <Link className='link' to="/menus" >Menus</Link>
+                <Link className='link' to="/contacts">Contacts</Link>
+                <Link className='link' to="/faqs">FAQs</Link>
+                <Link className='link' to="/Login">Login</Link>
             </ul>
             </div>
         </nav>
