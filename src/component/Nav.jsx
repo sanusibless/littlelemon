@@ -13,7 +13,7 @@ export default function Nav() {
                 <Link className='link' to="/" >Home</Link>
                 <Link className='link' to="/booking" >Reservations</Link>
                 <Link className='link' to="/menus" >Menus</Link>
-                <Link className='link' to="/contacts">Contacts</Link>
+                <Link className='link' to="/contact-us">Contacts</Link>
                 <Link className='link' to="/faqs">FAQs</Link>
                 <Link className='link' to="/Login">Login</Link>
             </ul>
