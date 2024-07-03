@@ -666,12 +666,11 @@ footer > p {
    }
 
    75% {
-    opacity: 0.8;
+    opacity: 9;
     transition: all 1s;
    }
   100% {
-    display: none;
-    opacity: 0.9;
+    opacity: 0;
     transition: all 1s;
    }
 }
