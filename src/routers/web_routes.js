@@ -3,6 +3,7 @@ import React from 'react';
 import HomePage from '../pages/HomePage';
 import ReservationPage from '../pages/ReservationPage';
 import ContactPage from '../pages/ContactPage';
+import LoginPage from '../pages/LoginPage';
 
 const router = createBrowserRouter([
     {
@@ -26,10 +27,11 @@ const router = createBrowserRouter([
       path: '/faqs',
       element: <FAQsPage />
     },
+    */
     {
       path: '/login',
       element: <LoginPage />
-    }*/
+    }
   
   ]);
 
