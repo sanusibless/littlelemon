@@ -4,12 +4,13 @@ import HomePage from '../pages/HomePage';
 import ReservationPage from '../pages/ReservationPage';
 import ContactPage from '../pages/ContactPage';
 import LoginPage from '../pages/LoginPage';
+import Page404 from '../pages/Page404';
 
 const router = createBrowserRouter([
     {
       path: '/',
       element: <HomePage />,
-      errorElement: <div> Oops! Not Found </div>
+      errorElement: <Page404 />
     },
     {
       path: '/booking',
