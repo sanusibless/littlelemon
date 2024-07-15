@@ -5,6 +5,7 @@ import ReservationPage from '../pages/ReservationPage';
 import ContactPage from '../pages/ContactPage';
 import LoginPage from '../pages/LoginPage';
 import Page404 from '../pages/Page404';
+import MenusPage from '../pages/MenusPage';
 
 const router = createBrowserRouter([
     {
@@ -19,11 +20,12 @@ const router = createBrowserRouter([
     {
       path: '/contact-us',
       element: <ContactPage />
-    },/*
+    },
     {
       path: '/menus',
       element: <MenusPage />
     },
+    /*
     {
       path: '/faqs',
       element: <FAQsPage />
