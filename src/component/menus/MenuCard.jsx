@@ -24,7 +24,7 @@ export default function MenuCard({ categoryMenus, onHandleCategory }) {
         <div className="menu-card">
             {categoryMenus.map( categoryMenu => {
                 const { strMeal, strMealThumb} = categoryMenu
-                return <div className="menu-card-item">
+                return <div key={strMeal} className="menu-card-item">
                             <div>
                                 <img className="meal-image" src={strMealThumb} alt={ strMeal + "'s picture"} />
                             </div>

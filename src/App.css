@@ -858,6 +858,7 @@ footer > p {
   margin-bottom: 3%;
   border-radius: 3px;
   width: 20%;
+  height: inherit;
 }
 
 .meal-image{
@@ -874,4 +875,34 @@ footer > p {
 
 .meal-title {
   
+}
+
+/* FAQs*/
+
+.faqs {
+  padding-top: 20vh;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 15vh;
+  color:#011a52;
+  background-color: #f9f9f9;
+}
+.question {
+  background-color: rgb(250, 250, 250);
+  padding: 2px 15px;
+  border-bottom: 2px solid #040d20 ;
+  
+}
+
+.answer {
+  text-align: justify;
+  margin-bottom: 5vh;
+  box-shadow: #f9f9f9;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+.ques-header {
+  display: flex;
+  justify-content: space-between;
 }

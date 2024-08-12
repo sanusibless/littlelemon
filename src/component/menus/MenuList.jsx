@@ -12,7 +12,7 @@ export default function MenuList({categories, activeCategory, onHandleCategory})
                     if(category.strCategory == activeCategory) {
                         cssClass += ' active'
                     }
-                    return <li className={cssClass} onClick={() => onHandleCategory(category.strCategory ?? 'Beef')} key={category.strCategory}>
+                    return <li key={category.strCategory} className={cssClass} onClick={() => onHandleCategory(category.strCategory ?? 'Beef')} key={category.strCategory}>
                               {category.strCategory}
                             </li>
                     })}

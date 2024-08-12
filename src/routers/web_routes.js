@@ -6,6 +6,8 @@ import ContactPage from '../pages/ContactPage';
 import LoginPage from '../pages/LoginPage';
 import Page404 from '../pages/Page404';
 import MenusPage from '../pages/MenusPage';
+import FAQsPage from '../pages/FAQsPage';
+import ConfirmedBooking from '../pages/ConfirmedBooking';
 
 const router = createBrowserRouter([
     {
@@ -25,16 +27,21 @@ const router = createBrowserRouter([
       path: '/menus',
       element: <MenusPage />
     },
-    /*
+
     {
       path: '/faqs',
       element: <FAQsPage />
     },
-    */
+
     {
       path: '/login',
       element: <LoginPage />
+    },
+    {
+      path: '/confirmed-booking',
+      element: <ConfirmedBooking />
     }
+  
   
   ]);
 

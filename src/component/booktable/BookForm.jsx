@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
 import ResponseComponent from '../response/ResponseComponent';
+import { useNavigate } from 'react-router-dom';
 
-export default function BookForm() {
+export default function BookForm({ availableTimes, dispatch, submitAPI }) {
 
     const [data, setData] = useState({
       date: '',
@@ -10,10 +11,12 @@ export default function BookForm() {
       specialRequest: '',
       occassion: '',
     })
+
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState({});
     const [response, setResponse] = useState({});
     const [displayResponse, setDiplayResponse] = useState(false);
+    const navigate = useNavigate();
  
     function clearError(e) {
     const { name } = e.target;
@@ -24,6 +27,7 @@ export default function BookForm() {
    }
 
    function handleChange(e) {
+    clearError(e);
     const { name, value} = e.target;
       if(name == 'numberOfGuests') {
         if(value > 0) {
@@ -37,17 +41,22 @@ export default function BookForm() {
             [name] : 'number of quests is required'
           }))
         }
-      } else if (value == '' || value.length <= 1) {
+      } else if( name == 'specialRequest') {
+          
+      }else if( name === 'date') {
+        let date = new Date(value);
+        dispatch({ type: "FETCH_DATE", date: date });
+      }
+      else if (value == '' || value.length <= 1) {
         setError(prevErr => ({
           ...prevErr,
           [name] : name == 'numberOfGuests' ? 'number of quests is required' : name + ' is required'
         }))
       }
-   
 
       setData( prevData => ({
         ...prevData,
-        [e.target.name] : e.target.value
+        [name] : value
       }))
     }
 
@@ -55,14 +64,16 @@ export default function BookForm() {
     let valid = true;
 
     for(const key of Object.keys(data) ) {
+      
       if(key == 'specialRequest') {
-        continue
-      }
-      if(data[key] == 0 || (data[key] == '' || data[key].length <= 0) ) {
+        continue;
+      }else if(data[key] == 0 || (data[key] == '' || data[key].length <= 0) ) {
+
         setError(prevErr => ({
           ...prevErr,
           [key]: key == 'numberOfGuests' ? 'number of quests is required' : key + ' is required'
         }))
+
         valid = false;
       }
     }
@@ -102,8 +113,14 @@ export default function BookForm() {
     e.preventDefault();
     console.log(data);
     if(validateData(data)) {
+      dispatch({ type: "SELECTED", date: new Date(data.date) });
       setLoading(true);
-      successResponse();
+      if(submitAPI(data)) {
+        let getReservations = localStorage.getItem("reservation") ?? [];
+        getReservations.push(data);
+        localStorage.setItem("reservations", getReservations);
+        navigate('/confirmed-booking');
+      }
     }
   }
 
@@ -113,7 +130,7 @@ export default function BookForm() {
 
   return (
     <div className='book-form'>
-        <h2 style={{ textAlign: 'center', color: '#011a52' }}>Book Table Now</h2>
+        <h2 style={{ textAlign: 'center', color: '#011a52' }}>Book  Now</h2>
                 <form className='form-container' onSubmit={handleFormSubmission}>
                     <div className='form-group'>
                       <div className='form-div'>
@@ -124,13 +141,10 @@ export default function BookForm() {
                       <div className='form-div'>
                         <label className='form-label' htmlFor="res-time">Choose time</label>
                         <select onFocus={clearError} value={data.time} onChange={handleChange} name='time' className="form-select" id="res-time ">
-                          <option>-- select time --</option>
-                          <option  value="17:00">17:00</option>
-                          <option  value="18:00">18:00</option>
-                          <option  value="19:00">19:00</option>
-                          <option  value="20:00">20:00</option>
-                          <option  value="21:00">21:00</option>
-                          <option  value="22:00">22:00</option>
+                          <option key={"no-option"} value={""}>-- Select time --</option>
+                          {
+                            availableTimes.map( time => <option key={time} value={time}>{time}</option>)
+                          }
                         </select>
                         { error && error.time != '' && <small className='error'>{error?.time}</small> }
                       </div>
@@ -144,7 +158,7 @@ export default function BookForm() {
                       <div className='form-div'> 
                         <label className='form-label' htmlFor="occasion">Occasion</label>
                         <select onFocus={clearError} value={data.occassion} onChange={handleChange} name="occassion" className="form-select" id="occasion">
-                            <option value>Choose occassion</option>
+                            <option value="">Choose occassion</option>
                             <option value='Anniversary'>Anniversary</option>
                             <option value='Graduation'>Graduation</option>
                             <option value='Dinner Date'>Dinner Date</option>
@@ -161,7 +175,7 @@ export default function BookForm() {
 
                     <div className='form-btn'>
                       <button className='form-link' type="submit">
-                          Book Now
+                          Book
                       </button>
                     </div>
             </form>
