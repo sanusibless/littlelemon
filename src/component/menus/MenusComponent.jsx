@@ -6,6 +6,7 @@ import api from '../../api/menus_api'
 import MenuCard from "./MenuCard";
 import ResponseComponent from "../response/ResponseComponent"
 import Loading from "../helpers/Loading";
+import NoInternet from "../helpers/NoInternet";
 
 
 
@@ -16,10 +17,10 @@ export default function MenusComponent() {
     const [response, setResponse] = useState({});
     const [displayResponse, setDiplayResponse] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [showNoInternet, setShowNoInternet] = useState(false);
 
    function handleCategory(category) {
         setLoading(true);
-        setCategoryMenus([]);
 
         fetch(api.categoryMenus + category)
         .then( data => data.json()).
@@ -28,8 +29,11 @@ export default function MenusComponent() {
             setCategory(category);
 
          }).catch( err => {
-            errorResponse(err);
-            setLoading(false);
+            if(err.name == 'NetworkError') {
+                setShowNoInternet(true);
+            } else {
+                errorResponse("Something went wrong, try again later")
+            }
         });
 
         setLoading(false);
@@ -39,7 +43,7 @@ export default function MenusComponent() {
         setDiplayResponse(true);
         setResponse({
           status : 'error',
-          message: err.message
+          message: err
         });
     }
         
@@ -49,7 +53,6 @@ export default function MenusComponent() {
     
     useEffect(() => {
 
-        setLoading(true);
         // console.log(api.categoriesList);
         fetch(api.categoriesList)
         .then( data => data.json()).
@@ -57,25 +60,36 @@ export default function MenusComponent() {
             setCategories(data.meals);
          })
          .catch( err => {
-            // console.log(err + "hjj");
-            errorResponse("Error : " + err);
+            console.log(err.name)
+            if(err.name == 'TypeError') {
+                setShowNoInternet(true);
+            } else {
+                errorResponse("Something went wrong try again later")
+            }
         });
-    }, [categories])
+    }, [])
 
     return (
-        <>  
-            <Header />
-                <section className="menu-section">
-                    <h1 className="menu-title">Our Menus</h1>
-                    <div className="menu-div">
-                        <MenuList categories={categories} onHandleCategory={handleCategory} activeCategory={category}/>
-                        {loading ? <Loading /> : <MenuCard categoryMenus={categoryMenus} onHandleCategory={handleCategory}/> }
-                    </div>
-                </section>
-                {
-                    displayResponse && <ResponseComponent {...response} onCancelMessage={cancelMessages}/>
-                }
-            <Footer />
+        <>
+            {
+                showNoInternet ? <NoInternet /> : 
+                (
+                    <>
+                        <Header />
+                            <section className="menu-section">
+                                <h1 className="menu-title">Our Menus</h1>
+                                <div className="menu-div">
+                                    <MenuList categories={categories} onHandleCategory={handleCategory} activeCategory={category}/>
+                                { loading ? <Loading /> : <MenuCard categoryMenus={categoryMenus} onHandleCategory={handleCategory} activeCategory={category}/> }
+                                </div>
+                            </section>
+                            {
+                                displayResponse && <ResponseComponent {...response} onCancelMessage={cancelMessages}/>
+                            }
+                        <Footer />
+                    </>
+                )
+            }
         </>
     )
 }

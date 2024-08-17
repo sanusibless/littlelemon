@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function MenuCard({ categoryMenus, onHandleCategory }) {
-
-        if(categoryMenus.length == 0) {
-            onHandleCategory("Beef");
-        }
-
+export default function MenuCard({ categoryMenus, onHandleCategory, activeCategory }) {
+    if(categoryMenus.length == 0) {
+        onHandleCategory(activeCategory);
+    }
     let formatter = new Intl.NumberFormat('en-NG',
         {
             style: 'currency',

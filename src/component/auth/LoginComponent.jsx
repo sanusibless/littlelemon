@@ -75,7 +75,6 @@ export default function LoginComponent() {
 
         console.log(data);
 
-        
     }
 
     return <div className="login-div">
@@ -100,7 +99,7 @@ export default function LoginComponent() {
                             </div>
                         </div>
                         <div className="contact-btn-div login-btn-div">
-                                <button type="submit" className="contact-btn login-btn">
+                                <button type="submit" aria-label="On Submit" className="contact-btn login-btn">
                                     Sign in
                                 </button>
                         </div>

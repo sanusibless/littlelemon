@@ -16,7 +16,6 @@ export default function BookForm({ availableTimes, dispatch, submitAPI }) {
     const [error, setError] = useState({});
     const [response, setResponse] = useState({});
     const [displayResponse, setDiplayResponse] = useState(false);
-    const navigate = useNavigate();
  
     function clearError(e) {
     const { name } = e.target;
@@ -64,7 +63,18 @@ export default function BookForm({ availableTimes, dispatch, submitAPI }) {
     let valid = true;
 
     for(const key of Object.keys(data) ) {
-      
+      if(key == 'date') {
+        let today = new Date();
+        let currentDate =  today.getFullYear() + "-"+ (today.getMonth() + 1 < 10 ? "0" + (today.getMonth() +1) : today.getMonth() +1 ) + "-" + (today.getDate() < 10 ? "0" + today.getDate() : today.getDate());
+        if(data[key] <= currentDate) {
+          valid = false;
+          setError(prevErr => ({
+            ...prevErr,
+            [key]: 'Invalid date, please use future date' 
+          }))
+        }
+      }
+
       if(key == 'specialRequest') {
         continue;
       }else if(data[key] == 0 || (data[key] == '' || data[key].length <= 0) ) {
@@ -119,7 +129,6 @@ export default function BookForm({ availableTimes, dispatch, submitAPI }) {
         let getReservations = localStorage.getItem("reservation") ?? [];
         getReservations.push(data);
         localStorage.setItem("reservations", getReservations);
-        navigate('/confirmed-booking');
       }
     }
   }
@@ -134,13 +143,13 @@ export default function BookForm({ availableTimes, dispatch, submitAPI }) {
                 <form className='form-container' onSubmit={handleFormSubmission}>
                     <div className='form-group'>
                       <div className='form-div'>
-                          <label className='form-label' htmlFor="res-date">Choose date</label>
-                          <input onFocus={clearError} value={data.date} onChange={handleChange} name='date' className='form-control' type="date" id="res-date" />
+                          <label className='form-label' arial-label='res-date' htmlFor="res-date">Choose date</label>
+                          <input onFocus={clearError} arial-label='res-date' data-testid="res-date" value={data.date} onChange={handleChange} name='date' className='form-control' type="date" id="res-date" required />
                           { error && error.date != '' && <small className='error'>{error?.date}</small> }
                       </div>
                       <div className='form-div'>
                         <label className='form-label' htmlFor="res-time">Choose time</label>
-                        <select onFocus={clearError} value={data.time} onChange={handleChange} name='time' className="form-select" id="res-time ">
+                        <select onFocus={clearError} value={data.time}  data-testid="res-time" onChange={handleChange} name='time' className="form-select" id="res-time" required>
                           <option key={"no-option"} value={""}>-- Select time --</option>
                           {
                             availableTimes.map( time => <option key={time} value={time}>{time}</option>)
@@ -152,12 +161,12 @@ export default function BookForm({ availableTimes, dispatch, submitAPI }) {
                     <div className='form-group'>
                       <div className='form-div'>
                         <label className='form-label' htmlFor="guests">Number of guests</label>
-                        <input onFocus={clearError} value={data.numberOfGuests} onChange={handleChange} name="numberOfGuests" className='form-control' type="number"  max="10" id="guests" />
+                        <input onFocus={clearError} id="guests"  data-testid="guests"  value={data.numberOfGuests} onChange={handleChange} name="numberOfGuests" className='form-control' type="number" min="1" max="10" />
                         { error && error.numberOfGuests != '' && <small className='error'>{error?.numberOfGuests}</small> }
                       </div>
                       <div className='form-div'> 
-                        <label className='form-label' htmlFor="occasion">Occasion</label>
-                        <select onFocus={clearError} value={data.occassion} onChange={handleChange} name="occassion" className="form-select" id="occasion">
+                        <label className='form-label' htmlFor="occassion">Occasion</label>
+                        <select onFocus={clearError} value={data.occassion}  data-testid="occassion" onChange={handleChange} name="occassion" className="form-select" id="occasion" required>
                             <option value="">Choose occassion</option>
                             <option value='Anniversary'>Anniversary</option>
                             <option value='Graduation'>Graduation</option>
@@ -169,7 +178,7 @@ export default function BookForm({ availableTimes, dispatch, submitAPI }) {
                       </div>
                     </div>
 
-                    <textarea value={data.specialRequest} name='specialRequest' onChange={handleChange} >
+                    <textarea value={data.specialRequest} aria-label='specialRequest'  data-testid="special-request" name='specialRequest'  onChange={handleChange} >
                     </textarea>
                     { error && error.specialRequest != '' && <small className='error'>{error?.specialRequest}</small> }
 
