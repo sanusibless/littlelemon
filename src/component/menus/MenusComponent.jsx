@@ -77,7 +77,6 @@ export default function MenusComponent() {
                     <>
                         <Header />
                             <section className="menu-section">
-                                <h1 className="menu-title">Our Menus</h1>
                                 <div className="menu-div">
                                     <MenuList categories={categories} onHandleCategory={handleCategory} activeCategory={category}/>
                                 { loading ? <Loading /> : <MenuCard categoryMenus={categoryMenus} onHandleCategory={handleCategory} activeCategory={category}/> }

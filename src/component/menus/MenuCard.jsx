@@ -19,23 +19,27 @@ export default function MenuCard({ categoryMenus, onHandleCategory, activeCatego
        //  "strMealThumb": "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
 
     return (
-        <div className="menu-card">
-            {categoryMenus.map( categoryMenu => {
-                const { strMeal, strMealThumb} = categoryMenu
-                return <div key={strMeal} className="menu-card-item">
-                            <div>
-                                <img className="meal-image" src={strMealThumb} alt={ strMeal + "'s picture"} />
-                            </div>
-                            <div>
-                                <h5 className="meal-title"><span>{strMeal.substring(0, 20)}</span></h5>
-                                <h5 className="meal-title">Price : <small>{price}</small></h5>
-                                <div className="meal-link-div">
-                                    <Link className="meal-link" to="/view-meal">view</Link>
-                                    <Link className="meal-link" to="/order-meal">order</Link>
+        <>
+            <div className="menu-card">
+            <h1 className="menu-title">{ activeCategory }</h1>
+                {categoryMenus.map( categoryMenu => {
+                    const { strMeal, strMealThumb} = categoryMenu
+                    return <div key={strMeal} className="menu-card-item">
+                                <div>
+                                    <img className="meal-image" src={strMealThumb} alt={ strMeal + "'s picture"} />
+                                </div>
+                                <div>
+                                    <h5 className="meal-title"><span>{strMeal.substring(0, 20)}</span></h5>
+                                    <h5 className="meal-title">Price : <small>{price}</small></h5>
+                                    <div className="meal-link-div">
+                                        <Link className="meal-link" to="/view-meal">view</Link>
+                                        <Link className="meal-link" to="/order-meal">order</Link>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-             } )}
-        </div>
+                } )}
+            </div>
+        </>
+
     )
 }
