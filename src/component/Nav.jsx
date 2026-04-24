@@ -43,7 +43,7 @@ export default function Nav() {
             <ul className='menu'>
                 {
                     links.map(({ to, name}) => {
-                    return <Link key={name} className={ pathname == to ? "link link-active" : "link"} to={to}> 
+                    return <Link key={name} className={ pathname === to ? "link link-active" : "link"} to={to}> 
                         {name} 
                     </Link> })
                 }

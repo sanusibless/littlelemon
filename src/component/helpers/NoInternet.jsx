@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function () {
+export default function NoInternet() {
     return (
         <div className="no-internet">
             <h3>

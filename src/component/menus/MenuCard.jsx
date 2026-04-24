@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 export default function MenuCard({ categoryMenus, onHandleCategory, activeCategory }) {
-    if(categoryMenus.length == 0) {
+    if(categoryMenus.length === 0) {
         onHandleCategory(activeCategory);
     }
     let formatter = new Intl.NumberFormat('en-NG',

@@ -14,13 +14,13 @@ export default function LoginComponent() {
 
     function handleChange(e) {
         const { name, value} = e.target;
-          if (value == '' || value.length <= 1) {
+          if (value === '' || value.length <= 1) {
             setError(prevErr => ({
               ...prevErr,
               [name] :  name + ' is required'
             }))
       } else if(value.length > 1) {
-            if(name == 'email') {
+            if(name === 'email') {
                 let emailPattern = /[A-Za-z]{1}.*@[A-Za-z]*\.[A-Za-z]*/;
                 if(!emailPattern.test(value)) {
                     setError(prevErr => ({
@@ -33,10 +33,10 @@ export default function LoginComponent() {
                         return prevErr
                       });
                 }
-            } else if(name == 'password') {
+            } else if(name === 'password') {
                 let passwordPattern = /([A-Z]{1,})?([a-z]{1,})?([0-9]{1,})?([^\w\s\d]{1,})?/;
 
-                if(value.length != 8) {
+                if(value.length !== 8) {
                     setError(prevErr => ({
                         ...prevErr,
                         [name] :  'Password must be 8 characters'
@@ -79,7 +79,7 @@ export default function LoginComponent() {
 
     return <div className="login-div">
                 <div className="login-logo">
-                    <img src={logo} />
+                    <img src={logo} alt="Logo"/>
                 </div>
                 <div className="auth-form">
                     <h2>Login</h2>
@@ -87,14 +87,14 @@ export default function LoginComponent() {
                         <div>
                             <label className="contact-label login-label">Email</label>
                             <input value={data.email} onChange={handleChange} className='contact-input login-input' type="text" name="email" />
-                            { error && error.email != '' && <small className='error'>{error?.email}</small>}
+                            { error && error.email !== '' && <small className='error'>{error?.email}</small>}
                         </div>
                         <div>
                             <label className="contact-label login-label" >Password</label>
                             <input value={data.password} onChange={handleChange} className='contact-input login-input' name="password" type="password" />
 
                             <div style={{ display : 'flex', justifyContent: 'space-between', marginTop: '5px'}}>
-                            {error && error.password != '' && <small className='error'>{error?.password}</small> }
+                            {error && error.password !== '' && <small className='error'>{error?.password}</small> }
                              <small><Link to="" className="login-forgot">Forgot Password? </Link></small>
                             </div>
                         </div>

@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import HomePage from "./HomePage";
 import img from '../icons_assets/img/404-error-isometric-illustration.png'
 
 export default function Page404() {
@@ -14,7 +13,7 @@ export default function Page404() {
             <div className="oops-text-div">
                 <h1>Oops!</h1>
                 <p>We couldn't find the page you were looking for</p>
-                <p ><Link to="/" className="base-url">Go home page</Link></p>
+                <p ><Link to="/" className="base-url">Go to home page</Link></p>
             </div>
         </div>
     )

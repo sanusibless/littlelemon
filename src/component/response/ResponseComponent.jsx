@@ -7,7 +7,7 @@ export default function ResponseComponent({ status, message, onCancelMessage }) 
 
     return (
         <div>
-            { status == 'success' ? <SuccessComponent message={message} onCancelMessage={onCancelMessage} /> : <ErrorComponent message={message} onCancelMessage ={onCancelMessage} /> }
+            { status === 'success' ? <SuccessComponent message={message} onCancelMessage={onCancelMessage} /> : <ErrorComponent message={message} onCancelMessage ={onCancelMessage} /> }
         </div>
     )
 }

@@ -10,7 +10,7 @@ export default function IntroMsg() {
                 Discover culinary delight at Little Lemon. Fresh, local ingredients, expertly crafted flavors. A dining experience beyond the ordinary.
             </div>
             <div className="intro-btn">
-                <a href="" >Book a table</a>
+                <a href="/" >Book a table</a>
             </div>
         </div>
     </div>

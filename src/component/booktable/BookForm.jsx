@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import ResponseComponent from '../response/ResponseComponent';
-import { useNavigate } from 'react-router-dom';
+import Loading from '../helpers/Loading';
 
 export default function BookForm({ availableTimes, dispatch, submitAPI }) {
 
@@ -28,7 +28,7 @@ export default function BookForm({ availableTimes, dispatch, submitAPI }) {
    function handleChange(e) {
     clearError(e);
     const { name, value} = e.target;
-      if(name == 'numberOfGuests') {
+      if(name === 'numberOfGuests') {
         if(value > 0) {
           setError( prevErr => {
             delete prevErr[name];
@@ -40,16 +40,16 @@ export default function BookForm({ availableTimes, dispatch, submitAPI }) {
             [name] : 'number of quests is required'
           }))
         }
-      } else if( name == 'specialRequest') {
+      } else if( name === 'specialRequest') {
           
       }else if( name === 'date') {
         let date = new Date(value);
         dispatch({ type: "FETCH_DATE", date: date });
       }
-      else if (value == '' || value.length <= 1) {
+      else if (value === '' || value.length <= 1) {
         setError(prevErr => ({
           ...prevErr,
-          [name] : name == 'numberOfGuests' ? 'number of quests is required' : name + ' is required'
+          [name] : name === 'numberOfGuests' ? 'number of quests is required' : name + ' is required'
         }))
       }
 
@@ -63,7 +63,7 @@ export default function BookForm({ availableTimes, dispatch, submitAPI }) {
     let valid = true;
 
     for(const key of Object.keys(data) ) {
-      if(key == 'date') {
+      if(key === 'date') {
         let today = new Date();
         let currentDate =  today.getFullYear() + "-"+ (today.getMonth() + 1 < 10 ? "0" + (today.getMonth() +1) : today.getMonth() +1 ) + "-" + (today.getDate() < 10 ? "0" + today.getDate() : today.getDate());
         if(data[key] <= currentDate) {
@@ -75,13 +75,13 @@ export default function BookForm({ availableTimes, dispatch, submitAPI }) {
         }
       }
 
-      if(key == 'specialRequest') {
+      if(key === 'specialRequest') {
         continue;
-      }else if(data[key] == 0 || (data[key] == '' || data[key].length <= 0) ) {
+      }else if(data[key] === 0 || (data[key] === '' || data[key].length <= 0) ) {
 
         setError(prevErr => ({
           ...prevErr,
-          [key]: key == 'numberOfGuests' ? 'number of quests is required' : key + ' is required'
+          [key]: key === 'numberOfGuests' ? 'number of quests is required' : key + ' is required'
         }))
 
         valid = false;
@@ -93,31 +93,31 @@ export default function BookForm({ availableTimes, dispatch, submitAPI }) {
     return valid;
    }
 
-    function successResponse() 
-    {
-      setDiplayResponse(true);
-      setResponse({
-        status: 'success',
-        message: 'Table Successfull Reserved'
-      })
-      setData({
-        date: '',
-        time: '',
-        numberOfGuests: 0,
-        specialRequest: '',
-        occassion: '',
-      });
-      setError({});
-    }
+  // function successResponse() 
+  // {
+  //   setDiplayResponse(true);
+  //   setResponse({
+  //     status: 'success',
+  //     message: 'Table Successfull Reserved'
+  //   })
+  //   setData({
+  //     date: '',
+  //     time: '',
+  //     numberOfGuests: 0,
+  //     specialRequest: '',
+  //     occassion: '',
+  //   });
+  //   setError({});
+  // }
 
-  function errorResponse() {
-    setDiplayResponse(true);
-    setResponse({
-      status : 'error',
-      message: 'Please check inputs and try again'
-    })
-    // setDiplayResponse(false);
-  }
+  // function errorResponse() {
+  //   setDiplayResponse(true);
+  //   setResponse({
+  //     status : 'error',
+  //     message: 'Please check inputs and try again'
+  //   })
+  //   // setDiplayResponse(false);
+  // }
   
  const handleFormSubmission = (e) => {
     e.preventDefault();
@@ -145,7 +145,7 @@ export default function BookForm({ availableTimes, dispatch, submitAPI }) {
                       <div className='form-div'>
                           <label className='form-label' arial-label='res-date' htmlFor="res-date">Choose date</label>
                           <input onFocus={clearError} arial-label='res-date' data-testid="res-date" value={data.date} onChange={handleChange} name='date' className='form-control' type="date" id="res-date" required />
-                          { error && error.date != '' && <small className='error'>{error?.date}</small> }
+                          { error && error.date !== '' && <small className='error'>{error?.date}</small> }
                       </div>
                       <div className='form-div'>
                         <label className='form-label' htmlFor="res-time">Choose time</label>
@@ -155,14 +155,14 @@ export default function BookForm({ availableTimes, dispatch, submitAPI }) {
                             availableTimes.map( time => <option key={time} value={time}>{time}</option>)
                           }
                         </select>
-                        { error && error.time != '' && <small className='error'>{error?.time}</small> }
+                        { error && error.time !== '' && <small className='error'>{error?.time}</small> }
                       </div>
                     </div>
                     <div className='form-group'>
                       <div className='form-div'>
                         <label className='form-label' htmlFor="guests">Number of guests</label>
                         <input onFocus={clearError} id="guests"  data-testid="guests"  value={data.numberOfGuests} onChange={handleChange} name="numberOfGuests" className='form-control' type="number" min="1" max="10" />
-                        { error && error.numberOfGuests != '' && <small className='error'>{error?.numberOfGuests}</small> }
+                        { error && error.numberOfGuests !== '' && <small className='error'>{error?.numberOfGuests}</small> }
                       </div>
                       <div className='form-div'> 
                         <label className='form-label' htmlFor="occassion">Occasion</label>
@@ -174,19 +174,20 @@ export default function BookForm({ availableTimes, dispatch, submitAPI }) {
                             <option value='Hangout'>Dinner Date</option>
                             <option value='End of the year Dinner Night'>Dinner Night</option>
                         </select>
-                        { error && error.occassion != '' && <small className='error'>{error?.occassion}</small> }
+                        { error && error.occassion !== '' && <small className='error'>{error?.occassion}</small> }
                       </div>
                     </div>
 
                     <textarea value={data.specialRequest} aria-label='specialRequest'  data-testid="special-request" name='specialRequest'  onChange={handleChange} >
                     </textarea>
-                    { error && error.specialRequest != '' && <small className='error'>{error?.specialRequest}</small> }
-
-                    <div className='form-btn'>
-                      <button className='form-link' type="submit">
-                          Book
-                      </button>
-                    </div>
+                    { error && error.specialRequest !== '' && <small className='error'>{error?.specialRequest}</small> }
+                    { loading ? <Loading /> : 
+                      <div className='form-btn'>
+                        <button className='form-link' type="submit">
+                            Book
+                        </button>
+                      </div>
+                    }
             </form>
 
             {

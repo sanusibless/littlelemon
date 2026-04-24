@@ -23,13 +23,13 @@ export default function MenusComponent() {
         setLoading(true);
 
         fetch(api.categoryMenus + category)
-        .then( data => data.json()).
-        then( data => { 
+        .then( data => data.json())
+        .then( data => { 
             setCategoryMenus(data.meals);
             setCategory(category);
 
          }).catch( err => {
-            if(err.name == 'NetworkError') {
+            if(err.name === 'NetworkError') {
                 setShowNoInternet(true);
             } else {
                 errorResponse("Something went wrong, try again later")
@@ -55,13 +55,13 @@ export default function MenusComponent() {
 
         // console.log(api.categoriesList);
         fetch(api.categoriesList)
-        .then( data => data.json()).
-        then( data => { 
+        .then( data => data.json())
+        .then( data => { 
             setCategories(data.meals);
          })
          .catch( err => {
             console.log(err.name)
-            if(err.name == 'TypeError') {
+            if(err.name === 'TypeError') {
                 setShowNoInternet(true);
             } else {
                 errorResponse("Something went wrong try again later")

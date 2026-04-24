@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import axios from 'axios';
+import React from "react";
 export default function MenuList({categories, activeCategory, onHandleCategory}) {
 
 
@@ -9,7 +8,7 @@ export default function MenuList({categories, activeCategory, onHandleCategory})
             <ul className="menu-item-list">
                 {categories.map( (category) => {
                     let cssClass = 'normal';
-                    if(category.strCategory == activeCategory) {
+                    if(category.strCategory === activeCategory) {
                         cssClass += ' active'
                     }
                     return <li key={category.strCategory} className={cssClass} onClick={() => onHandleCategory(category.strCategory ?? 'Beef')} >
