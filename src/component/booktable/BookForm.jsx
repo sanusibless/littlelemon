@@ -14,7 +14,7 @@ export default function BookForm({ availableTimes, dispatch, submitAPI }) {
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState({});
-    const [response, setResponse] = useState({});
+    // const [response, setResponse] = useState({});
     const [displayResponse, setDiplayResponse] = useState(false);
  
     function clearError(e) {

@@ -18,9 +18,10 @@ export function updateTimes(state, action) {
         case "FETCH_DATE" : {
             return fetchAPI(action.date)
         }
+        default: {
+            throw Error('Unknown action: ' + action.type);
+        }
     }
-
-    throw Error('Unknown action: ' + action.type);
 }
 
 export function initializeTimes() {
